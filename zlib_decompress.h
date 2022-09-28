@@ -1,6 +1,7 @@
 #pragma once
 
 
+#include <stdexcept>
 #include <cstdint>
 #include <vector>
 
@@ -20,7 +21,7 @@
 
 NAMESPACE_ZLIB_BEGIN
 
-void decompress(BitstreamReader input, std::vector<uint8_t>& output) {
+inline void decompress(BitstreamReader input, std::vector<uint8_t>& output) {
 	// std::cout << " --- Decompressing:\n";
 
 	const uint8_t CMF = input.readNum(8);
@@ -31,6 +32,15 @@ void decompress(BitstreamReader input, std::vector<uint8_t>& output) {
 	const uint8_t FLEVEL = FLG >> 6; // 0 - fastest algorithm, 1 - fast algorithm, 2 - default algorithm, 3 - maximum compression, slowest algorithm
 	const uint8_t FDICT = (FLG >> 5) & 0x1;
 	const uint8_t FCHECK = FLG & 0x1F;
+
+	// suppress warnings:
+	(void)CMF;
+	(void)CINFO;
+	(void)CM;
+	(void)FLG;
+	(void)FLEVEL;
+	(void)FDICT;
+	(void)FCHECK;
 
 	// std::cout << "FLEVEL: " << (int)FLEVEL << "\n";
 	// std::cout << "FDICT: " << (int)FDICT << "\n";

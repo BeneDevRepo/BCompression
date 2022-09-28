@@ -20,7 +20,7 @@
 
 NAMESPACE_ZLIB_BEGIN
 
-void compress(const void *const data, const size_t length, Bitstream &output, const deflate::DeflateType type = deflate::DeflateType::DYNAMIC, const uint8_t FLEVEL = 3) {
+inline void compress(const void *const data, const size_t length, Bitstream &output, const deflate::DeflateType type = deflate::DeflateType::DYNAMIC, const uint8_t FLEVEL = 3) {
 	// std::cout << " --- Compressing:\n";
 
 	const uint8_t CINFO = 7; // For CM = 8, CINFO is the base-2 logarithm of the LZ77 window size, minus eight (CINFO=7 indicates a 32K window size (2^(7+8)) = ~32k)

@@ -64,7 +64,7 @@ struct LZSSSymbol { // symbol for actual Data
 
 
 // compute lzss-free result: (WORSE COMPRESSION)
-std::vector<LZSSSymbol> computeLZSS_STUPID(const uint8_t *const data, const size_t length) {
+inline std::vector<LZSSSymbol> computeLZSS_STUPID(const uint8_t *const data, const size_t length) {
 	std::vector<LZSSSymbol> lzssResult;
 	for(size_t i = 0; i < length; i++)
 		lzssResult.emplace_back(data[i]);
@@ -72,7 +72,7 @@ std::vector<LZSSSymbol> computeLZSS_STUPID(const uint8_t *const data, const size
 }
 
 
-std::vector<LZSSSymbol> computeLZSS(
+inline std::vector<LZSSSymbol> computeLZSS(
 		const uint8_t *const data,
 		const size_t length,
 		const size_t MIN_LENGTH = 3, // minimum representable Length
